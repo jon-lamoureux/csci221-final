@@ -2,11 +2,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-using namespace std;
 
 int encrypt::beginEncrypt(string& inputFile, string& outputFile, char& inputType, string& keyword) {
 	string genKeyword, encryptedText;
-	int size;
+	// remove spaces from the string
 	// If we need to open a file, turn it into a string
 	string content = inputFile;
 	if (inputType == 'f') {
@@ -40,9 +39,17 @@ int encrypt::beginEncrypt(string& inputFile, string& outputFile, char& inputType
 		// Add to encrypted string
 		encryptedText.push_back(curr);
 	}
-	cout << "The encrypted text of \"" << content << "\" is: " << encryptedText;
+	cout << "The encrypted text of \"" << content << "\" is: " << encryptedText << endl;
 	ofstream outFile(outputFile, ios::out);
 	outFile << encryptedText;
 	outFile.close();
+	cout << "The result of your encryption has been stored in " << outputFile << endl;
+	ofstream keyFile("key_" + outputFile, ios::out);
+	keyFile << keyword;
+	keyFile.close();
+	cout << "The key used for your encryption has been stored in key_" << outputFile << endl;
+	if (inputType == 'f') {
+		cout << "Your original input file can still be found at " << inputFile << endl;
+	}
 	return 0;
 }

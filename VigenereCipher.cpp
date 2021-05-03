@@ -49,7 +49,7 @@ int main() {
 	cout << endl << "Enter your keyword: It can be anything, as long as it only contains letters (example: CHRISTMAS): ";
 	cin >> keyword;
 
-	// If else
+	// If else statements to check what the user chose
 	if (methodType == 'e' && fileType == 'f') {
 		cout << "Enter name of file to encrypt: ";
 		cin >> fileName;
@@ -60,11 +60,13 @@ int main() {
         decryption.beginDecrypt(fileName, outputName, fileType, keyword);
 	} else if (methodType == 'd' && fileType == 't') {
 		cout << "Enter text to decrypt: ";
-		cin >> inputText;
+		cin.ignore();
+		getline(cin, inputText);
         decryption.beginDecrypt(inputText, outputName, fileType, keyword);
 	} else if (methodType == 'e' && fileType == 't') {
 		cout << "Enter text to encrypt: ";
-		cin >> inputText;
+		cin.ignore();
+		getline(cin, inputText);
         encryption.beginEncrypt(inputText, outputName, fileType, keyword);
 	}
 
