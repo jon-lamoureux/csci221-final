@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-int decrypt::beginDecrypt(string& inputFile, string& outputFile, char& inputType) {
+int decrypt::beginDecrypt(string& inputFile, string& outputFile, char& inputType, string& keyword) {
 	// If we need to open a file, turn it into a string
 	string content = inputFile;
 	if (inputType == 'f') {

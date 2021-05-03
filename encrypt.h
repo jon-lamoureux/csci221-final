@@ -6,7 +6,7 @@ using namespace std;
 class encrypt {
 public:
 	encrypt(){};
-	int beginEncrypt(string& inputFile, string& outputFile, char& inputType);
+	int beginEncrypt(string& inputFile, string& outputFile, char& inputType, string& keyword);
 };
 
 #endif /* ENCRYPT_H_ */

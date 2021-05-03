@@ -1,8 +1,8 @@
 //============================================================================
-// Name        : HillCipher.cpp
+// Name        : VigenereCipher.cpp
 // Author      : Jonathan Lamoureux
 // Version     :
-// Description : A Hill cipher that uses a square matrix to encrypt and decrypt text
+// Description : A Vigenere cipher that decrypts and encrypts text from command lines or files.
 //============================================================================
 
 #include "encrypt.h"
@@ -14,7 +14,7 @@ using namespace std;
 int main() {
 	// Variable creation
 	char methodType, fileType;
-	string fileName, outputName, inputText;
+	string fileName, outputName, inputText, keyword;
     encrypt encryption;
     decrypt decryption;
 
@@ -45,23 +45,27 @@ int main() {
 	cout << endl << "Enter name of output file (example: output.txt): ";
 	cin >> outputName;
 
+	// Get user keyword
+	cout << endl << "Enter your keyword: It can be anything, as long as it only contains letters (example: CHRISTMAS): ";
+	cin >> keyword;
+
 	// If else
 	if (methodType == 'e' && fileType == 'f') {
 		cout << "Enter name of file to encrypt: ";
 		cin >> fileName;
-        encryption.beginEncrypt(fileName, outputName, fileType);
+        encryption.beginEncrypt(fileName, outputName, fileType, keyword);
 	} else if (methodType == 'd' && fileType == 'f') {
 		cout << "Enter name of file to decrypt: ";
 		cin >> fileName;
-        decryption.beginDecrypt(fileName, outputName, fileType);
+        decryption.beginDecrypt(fileName, outputName, fileType, keyword);
 	} else if (methodType == 'd' && fileType == 't') {
 		cout << "Enter text to decrypt: ";
 		cin >> inputText;
-        decryption.beginDecrypt(inputText, outputName, fileType);
+        decryption.beginDecrypt(inputText, outputName, fileType, keyword);
 	} else if (methodType == 'e' && fileType == 't') {
 		cout << "Enter text to encrypt: ";
 		cin >> inputText;
-        encryption.beginEncrypt(inputText, outputName, fileType);
+        encryption.beginEncrypt(inputText, outputName, fileType, keyword);
 	}
 
 

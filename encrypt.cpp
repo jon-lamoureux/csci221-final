@@ -4,7 +4,9 @@
 #include <string>
 using namespace std;
 
-int encrypt::beginEncrypt(string& inputFile, string& outputFile, char& inputType) {
+int encrypt::beginEncrypt(string& inputFile, string& outputFile, char& inputType, string& keyword) {
+	string genKeyword;
+	int size;
 	// If we need to open a file, turn it into a string
 	string content = inputFile;
 	if (inputType == 'f') {
@@ -21,7 +23,16 @@ int encrypt::beginEncrypt(string& inputFile, string& outputFile, char& inputType
 			inFile.close();
 		}
 	}
-	cout << content;
+	// Since the cipher requires the key to be the same length as the string to encrypt,
+	// We need to increase the length of the key to be the same as the phrase to encrypt if it is smaller
+	size = content.size();
+
+	for (int i = 0; i < size; i++) {
+		cout << i;
+
+	}
+
+	cout << genKeyword;
 	ofstream outFile(outputFile, ios::out);
 	outFile << content;
 	outFile.close();
