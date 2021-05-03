@@ -1,18 +1,6 @@
-/*
- * decrypt.cpp
- *
- *  Created on: Apr 23, 2021
- *      Author: Jonathan
- */
-
 #include "decrypt.h"
+using namespace std;
 
-decrypt::decrypt() {
-	// TODO Auto-generated constructor stub
-
+int decrypt::beginDecrypt(string& inputFile, string& outputFile, char& inputType) {
+	return 0;
 }
-
-decrypt::~decrypt() {
-	// TODO Auto-generated destructor stub
-}
-

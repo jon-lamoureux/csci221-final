@@ -41,22 +41,27 @@ int main() {
 		cin >> methodType;
 	}
 
+	// Get output file name
 	cout << endl << "Enter name of output file (example: output.txt): ";
 	cin >> outputName;
 
-
+	// If else
 	if (methodType == 'e' && fileType == 'f') {
 		cout << "Enter name of file to encrypt: ";
 		cin >> fileName;
+        encryption.beginEncrypt(fileName, outputName, fileType);
 	} else if (methodType == 'd' && fileType == 'f') {
 		cout << "Enter name of file to decrypt: ";
 		cin >> fileName;
+        decryption.beginDecrypt(fileName, outputName, fileType);
 	} else if (methodType == 'd' && fileType == 't') {
 		cout << "Enter text to decrypt: ";
 		cin >> inputText;
+        decryption.beginDecrypt(inputText, outputName, fileType);
 	} else if (methodType == 'e' && fileType == 't') {
 		cout << "Enter text to encrypt: ";
 		cin >> inputText;
+        encryption.beginEncrypt(inputText, outputName, fileType);
 	}
 
 
