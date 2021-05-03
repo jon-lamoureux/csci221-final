@@ -12,6 +12,44 @@
 using namespace std;
 
 int main() {
-	cout << "Welcome to the Vigenere Cipher Encryption and Decryption Program" << endl;
-	cout << "Would you like to encrypt or decrypt a file? Input \"e\", \"d\", or anything else to cancel: " << endl;
+	// Variable creation
+	char methodType, fileType;
+	string fileName, outputName, inputText;
+
+	// Opening statement
+	cout << "Welcome to the Vigenere Cipher Encryption and Decryption Program" << endl << endl;
+
+	// Ask the user if they want to use raw text or load a file
+	cout << "Would you like to load a file or input raw text?" << endl << "Input \"f\" to load a file or \"t\" to input text: ";
+	cin >> fileType;
+
+	// Validate user input
+	while (fileType != 'f' && fileType != 't') {
+		cout << "Error: input either \"f\" to load a file or \"t\" to input text: ";
+		cin >> fileType;
+	}
+
+	// Ask the user if they would like to encrypt or decrypt
+	cout << endl << "Would you like to encrypt or decrypt?" << endl << "Input \"e\" for encryption or \"d\" for decryption: ";
+	cin >> methodType;
+
+	// Validate user input
+	while (methodType != 'e' && methodType!= 'd') {
+		cout << "Error: input either \"e\" to encrypt or \"d\" to decrypt: ";
+		cin >> methodType;
+	}
+
+	if (methodType == 'e' && fileType == 'f') {
+		cout << "Enter name of file to encrypt: ";
+		cin >> fileName;
+	} else if (methodType == 'd' && fileType == 'f') {
+		cout << "Enter name of file to decrypt: ";
+		cin >> fileName;
+	} else if (methodType == 'd' && fileType == 't') {
+		cout << "Enter text to decrypt: ";
+		cin >> inputText;
+	} else if (methodType == 'e' && fileType == 't') {
+		cout << "Enter text to encrypt: ";
+		cin >> inputText;
+	}
 }
