@@ -5,7 +5,7 @@
 using namespace std;
 
 int encrypt::beginEncrypt(string& inputFile, string& outputFile, char& inputType, string& keyword) {
-	string genKeyword;
+	string genKeyword, encryptedText;
 	int size;
 	// If we need to open a file, turn it into a string
 	string content = inputFile;
@@ -25,16 +25,24 @@ int encrypt::beginEncrypt(string& inputFile, string& outputFile, char& inputType
 	}
 	// Since the cipher requires the key to be the same length as the string to encrypt,
 	// We need to increase the length of the key to be the same as the phrase to encrypt if it is smaller
-	size = content.size();
-
-	for (int i = 0; i < size; i++) {
-		cout << i;
-
+	for (int i = 0; genKeyword.size() != content.size(); i++) {
+		genKeyword.push_back(keyword[i]);
+		if(i == (keyword.size() - 1)) {
+			i = -1;
+		}
 	}
+	// Encryption time! Finally
+	for(int i = 0; i < content.size(); i++) { // Encrypt each individual character
+		// according to https://www.dcode.fr/vigenere-cipher, the best way to use the cipher is to take the letter of the string's value and
+		// take the letter of the key's value and add them together, and then modulo 26 in case they are both higher than 13
+		char curr = (content[i] + genKeyword[i]) % 26 + 'A';
 
-	cout << genKeyword;
+		// Add to encrypted string
+		encryptedText.push_back(curr);
+	}
+	cout << "The encrypted text of \"" << content << "\" is: " << encryptedText;
 	ofstream outFile(outputFile, ios::out);
-	outFile << content;
+	outFile << encryptedText;
 	outFile.close();
 	return 0;
 }
