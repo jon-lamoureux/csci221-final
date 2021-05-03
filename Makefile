@@ -1,7 +1,7 @@
 OBJS    = decrypt.o encrypt.o VigenereCipher.o
 SOURCE  = decrypt.cpp encrypt.cpp VigenereCipher.cpp
 HEADER  = decrypt.h encrypt.h
-OUT     = vigenere.out
+OUT     = Cipher
 CC       = g++
 FLAGS    = -g -c -Wall
 LFLAGS   =
