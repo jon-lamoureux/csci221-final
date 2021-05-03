@@ -1,17 +1,12 @@
-/*
- * decrypt.h
- *
- *  Created on: Apr 23, 2021
- *      Author: Jonathan
- */
-
 #ifndef DECRYPT_H_
 #define DECRYPT_H_
+#include <string>
 
 class decrypt {
 public:
-	decrypt();
-	virtual ~decrypt();
+	decrypt(){};
+	int beginDecrypt(std::string& inputFile, std::string& outputFile, char& inputType);
 };
 
 #endif /* DECRYPT_H_ */
+

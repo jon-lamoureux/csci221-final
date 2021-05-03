@@ -1,17 +1,11 @@
-/*
- * encrypt.h
- *
- *  Created on: Apr 23, 2021
- *      Author: Jonathan
- */
-
 #ifndef ENCRYPT_H_
 #define ENCRYPT_H_
+#include <string>
 
 class encrypt {
 public:
-	encrypt();
-	virtual ~encrypt();
+	encrypt(){};
+	int beginEncrypt(std::string& inputFile, std::string& outputFile, char& inputType);
 };
 
 #endif /* ENCRYPT_H_ */

@@ -15,6 +15,8 @@ int main() {
 	// Variable creation
 	char methodType, fileType;
 	string fileName, outputName, inputText;
+    encrypt encryption;
+    decrypt decryption;
 
 	// Opening statement
 	cout << "Welcome to the Vigenere Cipher Encryption and Decryption Program" << endl << endl;
@@ -39,6 +41,10 @@ int main() {
 		cin >> methodType;
 	}
 
+	cout << endl << "Enter name of output file (example: output.txt): ";
+	cin >> outputName;
+
+
 	if (methodType == 'e' && fileType == 'f') {
 		cout << "Enter name of file to encrypt: ";
 		cin >> fileName;
@@ -52,4 +58,6 @@ int main() {
 		cout << "Enter text to encrypt: ";
 		cin >> inputText;
 	}
+
+
 }
