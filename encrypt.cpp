@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm>
+using namespace std;
 
 int encrypt::beginEncrypt(string& inputFile, string& outputFile, char& inputType, string& keyword) {
 	string genKeyword, encryptedText;
@@ -22,6 +24,7 @@ int encrypt::beginEncrypt(string& inputFile, string& outputFile, char& inputType
 			inFile.close();
 		}
 	}
+	content.erase(remove(content.begin(), content.end(), ' '), content.end());
 	// Since the cipher requires the key to be the same length as the string to encrypt,
 	// We need to increase the length of the key to be the same as the phrase to encrypt if it is smaller
 	for (int i = 0; genKeyword.size() != content.size(); i++) {
@@ -30,6 +33,9 @@ int encrypt::beginEncrypt(string& inputFile, string& outputFile, char& inputType
 			i = -1;
 		}
 	}
+	// Make everything uppercase because of ASCII being weird
+	transform(genKeyword.begin(), genKeyword.end(), genKeyword.begin(), ::toupper);
+	transform(content.begin(), content.end(), content.begin(), ::toupper);
 	// Encryption time! Finally
 	for(int i = 0; i < content.size(); i++) { // Encrypt each individual character
 		// according to https://www.dcode.fr/vigenere-cipher, the best way to use the cipher is to take the letter of the string's value and

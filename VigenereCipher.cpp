@@ -46,7 +46,7 @@ int main() {
 	cin >> outputName;
 
 	// Get user keyword
-	cout << endl << "Enter your keyword: It can be anything, as long as it only contains letters (example: CHRISTMAS): ";
+	cout << "Enter your keyword: It can be anything, as long as it only contains letters (example: CHRISTMAS): ";
 	cin >> keyword;
 
 	// If else statements to check what the user chose

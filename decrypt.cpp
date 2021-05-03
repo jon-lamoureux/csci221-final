@@ -32,13 +32,15 @@ int decrypt::beginDecrypt(string& inputFile, string& outputFile, char& inputType
 			i = -1;
 		}
 	}
+	// Make everything uppercase because of ASCII being weird
 	transform(genKeyword.begin(), genKeyword.end(), genKeyword.begin(), ::toupper);
+	transform(content.begin(), content.end(), content.begin(), ::toupper);
 	// Decryption time
 	for(int i = 0; i < content.size(); i++) { // Decrypt each individual character
 		// according to https://www.dcode.fr/vigenere-cipher, the best way to use the cipher is to take the letter of the string's value and
-		// take the letter of the key's value and add them together, and then modulo 26 in case they are both higher than 13
+		// take the letter of the key's value and subtract them, and then modulo 26
 		char curr = (content[i] - genKeyword[i] + 26) % 26 + 'A';
-		// Add to encrypted string
+		// Add to decrypted string
 		decryptedText.push_back(curr);
 	}
 	cout << "The decrypted text of \"" << content << "\" is: " << decryptedText << endl;
